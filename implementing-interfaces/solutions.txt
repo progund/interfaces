@@ -1,0 +1,181 @@
+1.
+
+package net.sortex.strings;
+
+import java.util.Arrays;
+
+public class Sorter {
+
+    public static void main(String[] args) {
+
+        Arrays.sort(args);
+        System.out.println(Arrays.toString(args));
+        
+    }
+    
+}
+        
+2. The sort method in the Arrays class sorts an array of Objects if it
+implements the <code>Comparable</code> interface. To implement this
+interface a class has to provide an implementation of the method int
+<code>compareTo(T o)</code>, which in the case of String objects
+translates to <code>int compareTo(String anotherString)</code>. If the
+class implements that method Java can easily sort the objects by
+somply asking them two-by-two which one is biggest.
+
+Compare this to sorting Students in a class. You have no idea what
+criteria to use to sort (name, length, age...) but you can still sort
+the students in order if you had a chance to ask the students
+two-by-two which one is biggest. This is the way Java does it. By
+implementing the compareTo interface we can rest assured tht
+Arrays.sort can do its job.
+
+3 Suggested solution:
+
+package net.sortex.books;
+
+import java.util.Arrays;
+
+public class Book {
+
+    private String name;
+
+    public Book(String name) {
+        this.name = name;
+    }
+          
+    public String name() {
+        return name;
+    }
+    
+}
+
+
+4 The compiler cannot find a method to use to compare two Book
+instances.
+
+<source lang="Bash">
+net/sortex/books/test/BookTest.java:17: error: no suitable method found for sort(ArrayList<Book>)
+        Collections.sort(books);
+</source>
+
+
+5
+
+<source lang="Java">
+</source>
+
+Java still can't sort the ArrayList. It's because we're not stating
+that we implement the Compareable interface.
+
+6 Suggested solution:
+
+<source lang="Java">
+public class Book implements Comparable {
+</source>
+
+
+7. Suggested solution:
+
+<source lang="Java">
+package net.sortex.books.test;
+
+import net.sortex.books.Book;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Arrays;
+
+public class BookTest {
+
+    public static void main(String[] args) {
+        ArrayList<Book> books = new ArrayList<>();
+
+        books.add(new Book("ABC ... and more"));
+        books.add(new Book("A book"));
+        books.add(new Book("Book again"));
+        books.add(new Book("Another book"));
+
+        Collections.sort(books);
+        System.out.println(Arrays.toString(books.toArray()));
+
+        
+    }
+
+}
+</source>
+
+
+<source lang="Java">
+package net.sortex.books;
+
+import java.util.Arrays;
+
+public class Book implements Comparable {
+
+    private String name;
+
+    public Book(String name) {
+        this.name = name;
+    }
+          
+    public String name() {
+        return name;
+    }
+
+    public int compareTo(Object anotherBook) {
+        return this.name.compareTo(((Book)anotherBook).name());
+    }
+
+    public String toString() {
+        return name;
+    }
+    
+}
+</source>
+
+8 See next suggested solution
+
+9 Suggested solution:
+
+<source lang="Java">
+package net.sortex.books;
+
+import java.util.Arrays;
+
+public class Book implements Comparable {
+
+    private String name;
+    private int    year;
+
+    private static final String SEPARATOR = ",";
+
+    public Book(String name, int year) {
+        this.name   = name;
+        this.year   = year;
+    }
+          
+    public String name() {
+        return name;
+    }
+
+    public int year() {
+        return year;
+    }
+
+    public int compareTo(Object anotherBook) {
+        int nameCheck = this.name.compareTo(((Book)anotherBook).name());
+        if (nameCheck==0) {
+            // If the names are the same, check author
+            return this.year - ((Book)anotherBook).year();
+        } else {
+            return nameCheck;
+        }
+    }
+
+    public String toString() {
+        return "(" + name + SEPARATOR + year + ")";
+    }
+    
+}
+</source>
