@@ -25,7 +25,7 @@ public class Book implements Comparable {
     public int compareTo(Object anotherBook) {
         int nameCheck = this.name.compareTo(((Book)anotherBook).name());
         if (nameCheck==0) {
-            // If the names are the same, check author
+            // If the names are the same, check year
             return this.year - ((Book)anotherBook).year();
         } else {
             return nameCheck;
