@@ -9,7 +9,8 @@
 
 
 JAVA_FILES=   \
-  ./net/sortex/books/Book.java          \
+  ./net/sortex/books/Book.java                \
+  ./net/sortex/books/BookYearComparator.java   \
   ./net/sortex/books/test/BookTest.java 
 
 
