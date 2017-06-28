@@ -75,6 +75,7 @@ public class BookTest {
         System.out.println("Sorting on name using nameComp4");
         Arrays.sort(books, nameComp4);
         System.out.println(Arrays.toString(books));
+        Comparator<Book> yearThenNameComp = yearComparator.thenComparing(nameComparator);        
     }
 
 }
