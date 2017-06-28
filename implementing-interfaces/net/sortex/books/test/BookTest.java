@@ -49,7 +49,39 @@ public class BookTest {
         System.out.println("Sorting on year");
         Arrays.sort(books, yearComparator);
         System.out.println(Arrays.toString(books));
+
+        Comparator<Book> nameComp1 = new BookNameComparator();
+
+        Comparator<Book> nameComp2 = (b1,b2) -> b1.name().compareTo(b2.name());
+
+        Comparator<Book> nameComp3 = Comparator.comparing(Book::name);
+
+        Comparator<Book> nameComp4 = new Comparator<Book>() {
+                @Override
+                public int compare(Book b1, Book b2) {
+                  return b1.name().compareTo(b2.name());
+                }
+          };
+        
+        System.out.println("Sorting on name using nameComp1");
+        Arrays.sort(books, nameComp1);
+        System.out.println(Arrays.toString(books));
+        System.out.println("Sorting on name using nameComp2");
+        Arrays.sort(books, nameComp2);
+        System.out.println(Arrays.toString(books));
+        System.out.println("Sorting on name using nameComp3");
+        Arrays.sort(books, nameComp3);
+        System.out.println(Arrays.toString(books));
+        System.out.println("Sorting on name using nameComp4");
+        Arrays.sort(books, nameComp4);
+        System.out.println(Arrays.toString(books));
     }
 
 }
     
+class BookNameComparator implements Comparator<Book> {
+    @Override
+    public int compare(Book b1, Book b2) {
+      return b1.name().compareTo(b2.name());
+    }
+}
