@@ -48,7 +48,7 @@ public class Book implements Comparable<Book> {
     }
     
     public String toString() {
-        return "(" + name + SEPARATOR + year + ")\n";
+        return "\n(" + name + SEPARATOR + year + ")";
     }
     
 }

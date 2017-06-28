@@ -6,6 +6,7 @@ import net.sortex.books.BookYearComparator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class BookTest {
 
@@ -29,12 +30,25 @@ public class BookTest {
         Arrays.sort(books);
         System.out.println(Arrays.toString(books));        
 
-        System.out.println("Sorted using BookYearComparator - using year and then names");
+        System.out.println("Sorted using BookYearComparator - using year");
         Arrays.sort(books, new BookYearComparator());
         System.out.println(Arrays.toString(books));        
 
-
-
+        // Java8 bonus:
+        // We could write our own combined comparator using two
+        // lambda expressions:
+        // First year, then name:
+        Comparator<Book> nameComparator = (b1, b2) ->
+          b1.name().compareTo(b2.name());
+        Comparator<Book> yearComparator = (b1, b2) ->
+          b1.year() - b2.year();
+        System.out.println("Sorting on year, then name:");
+        Arrays.sort(books, yearComparator.thenComparing(nameComparator));
+        System.out.println(Arrays.toString(books));
+        // Using the lambda above for sorting on year only:
+        System.out.println("Sorting on year");
+        Arrays.sort(books, yearComparator);
+        System.out.println(Arrays.toString(books));
     }
 
 }
