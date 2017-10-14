@@ -13,7 +13,7 @@ import org.progund.mediaplayer.Playable;
  * <pre>
  * FBMediaFile mediafile = new FBMediaFile(someFBFile);
  * </pre>
- * <p>
+ * </p>
  */
 public class FBMediaFile extends FBFile implements Playable {
 
