@@ -42,6 +42,8 @@ public class FBList {
    * otherwise
    */
   private static boolean isMedia(File f) {
+    // Alternative syntax:
+    //return java.nio.file.FileSystems.getDefault().getPathMatcher("glob:**.{ogg,mp3,avi,mkv,wma}").matches(f.toPath());
     return Arrays.asList(mediaSuffices).contains(suffix(f).toLowerCase());
   }
 
