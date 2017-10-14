@@ -48,17 +48,18 @@ public class FBMediaFile extends FBFile implements Playable {
    */
   @Override
   public String thumbnail() {
-    return fbFile.thumbnail();
+    return fbFile.thumbnail() + " \u25B6";
   }
 
   /**
    * Returns a String representation of this FBMediaFile
-   * @return This FBMediaFile as a String using the wrapped
-   * FBFile's own toString() method.
+   * @return This FBMediaFile as a String
    */
   @Override
   public String toString() {
-    return fbFile.toString();
+    // This will cause our own version of thumbnail()
+    // to be used in super.toString()
+    return super.toString();
   }
 
   /**
@@ -68,6 +69,6 @@ public class FBMediaFile extends FBFile implements Playable {
    */
   @Override
   public void play() {
-    System.out.println("Playing: " + fbFile);
+    System.out.println("Playing: " + this);
   }
 }
