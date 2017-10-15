@@ -146,15 +146,15 @@ String suffix = parts[parts.length -1]; // "mp3"
 suffix = "[" + suffix + "]";
 
 // Anonymous inner class implementing the ThumbnailGenerator interface:
-ThumbnailGenerator mp3Thumb = new ThumbnailGenerator() {
+ThumbnailGenerator thumbGenerator = new ThumbnailGenerator() {
    @Override
    public String thumbnail() {
-     return suffix;
+     return suffix; // e.g. "[mp3]" etc
    }
 };
 
 //Create the FBFile:
-FBFile fb = new FBFile(f, mp3Thumb);
+FBFile fb = new FBFile(f, thumbGenerator);
 ```
 And the lambda version would look like this:
 ```java
@@ -167,14 +167,19 @@ String[] parts = f.getName().split("\\.");
 String suffix = parts[parts.length -1]; // "mp3"
 suffix = "[" + suffix + "]";
 
-ThumbnailGenerator mp3Thumb = () -> suffix;
+ThumbnailGenerator thumbGenerator = () -> suffix; // lambda returning "[mp3]"
 
-FBFile fb = new FBFile(f, mp3Thumb);
+FBFile fb = new FBFile(f, thumbGenerator);
 ```
 That way, we would dynamically discover the file type (only caring about the
 file suffix, a behavior sadly often implemented by file browsers ;-) ) and
 create files which have a different thumbnail generated depending on their
 file suffix (which we pretend always reflects the file type).
+
+Not that the file in the example will have a generator for the "[mp3]" thumb,
+but a another file, let's say <code>wickerman.avi</code> whould get a generator
+for the "[avi]" thumb, because we are using the file suffix. We don't have to
+add or change anything, since we can handle every kind of suffix.
 
 Of course, we should have a special case for directories and files without a
 suffix. See the `org.progund.fb.util.FBList` class source code to see one
