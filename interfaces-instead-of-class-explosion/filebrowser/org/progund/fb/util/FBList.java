@@ -5,10 +5,10 @@ import org.progund.fb.domain.FBMediaFile;
 import org.progund.mediaplayer.Playable;
 
 import java.io.File;
-import java.util.List;
-import java.util.ArrayList;
 import java.io.FileFilter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * A utility class for generating lists of various types of FBFiles etc.
