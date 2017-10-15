@@ -22,16 +22,16 @@ public class FBList {
   private FBList() { }
   
   private static String[] mediaSuffices = {
-    "ogg",
-    "mp3",
     "avi",
-    "wma",
+    "midi",
     "mkv",
-    "webm",
-    "wmv",
+    "mp3",
+    "ogg",
     "oggv",
     "wav",
-    "midi"
+    "webm",
+    "wma",
+    "wmv"
   };
   
   /**
