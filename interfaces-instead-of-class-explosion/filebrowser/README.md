@@ -143,6 +143,7 @@ String[] parts = f.getName().split("\\.");
 // powderfinger.mp3 would become ["powderfinger", "mp3"]
 
 String suffix = parts[parts.length -1]; // "mp3"
+suffix = "[" + suffix + "]";
 
 // Anonymous inner class implementing the ThumbnailGenerator interface:
 ThumbnailGenerator mp3Thumb = new ThumbnailGenerator() {
@@ -164,6 +165,7 @@ String[] parts = f.getName().split("\\.");
 // powderfinger.mp3 would become ["powderfinger", "mp3"]
 
 String suffix = parts[parts.length -1]; // "mp3"
+suffix = "[" + suffix + "]";
 
 ThumbnailGenerator mp3Thumb = () -> suffix;
 
