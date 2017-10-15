@@ -256,6 +256,25 @@ This allows us to get a list of Playable references and call the play() method
 on all of them. The objects referred to by the list can very well be
 FBMediaFile objects.
 
+Now, the observant student asks, "couldn't we simply extend FBFile and
+implement Playable, the old fascion way, without passing and FBFile to the
+constructor of FBMediaFile?"
+
+Yes, we could. But what if there are many decorator classes, and we want to
+pick a few of them and decorate an FBFile? Let's say that there's a Displayable
+interface (for images and video), and a Streamable interface and some more
+decorator interfaces. Instead of creating classes which implmentents all of the
+combinations of the various interfaces, we can create one standard FBFile and
+then instantiate a whole chain of those decorator constructors as we see fit.
+
+We could do something like:
+```java
+FBFile fb = ... // we have a normal undecorated FBFile
+
+// Let's decorate fb with capabilities of doing play(), display(), stream()
+FBMediaFile fbm = new FBMediaFile(new FBDisplayable(new FBStreamable(fb)));
+```
+
 We think you need to read this text a few times and try to understand it, but
 also read the source code and try to understand that too, in order to fully
 grasp this example. But we think it shows some common and nice uses of
@@ -291,6 +310,17 @@ instance of FBMediaFile can be used anywhere an FBFile can be used - since an
 FBMediaFile _is an FBFile_ via inheritance. At the same time, an FBMediaFile is
 a Playable object, since the class implements the Playable interface and its
 play() method.
+
+The decorator pattern of course gets more useful when you have several
+decorator classes which can be chained together.
+
+Links:
+
+* [Wikipedia on Decorator](https://en.wikipedia.org/wiki/Decorator_pattern)
+* [Old article on Oracle on Decorator](http://www.oracle.com/technetwork/articles/entarch/decorators-099517.html)
+* [OO Design - Decorator](http://www.oodesign.com/decorator-pattern.html)
+* [TutorialsPoint - Decorator Pattern](http://www.tutorialspoint.com/design_pattern/decorator_pattern.htm)
+* [DZone - Decorator Pattern Tutorial with Java Examples](https://dzone.com/articles/design-patterns-decorator)
 
 Compiling and running the example
 =================================
