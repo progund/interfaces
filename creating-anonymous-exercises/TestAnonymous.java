@@ -23,5 +23,21 @@ public class TestAnonymous{
     Collections.sort(strings);
     System.out.println("Sorted using String's default compareTo:");
     System.out.println(strings);
+
+    /* Using separate class 
+       Collections.sort(strings, new ReversedStringComparator());
+       System.out.println("Sorted using ReversedStringComparator:");
+       System.out.println(strings);
+     */
+    
+    Collections.sort(strings, new Comparator<String>(){
+        @Override
+        public int compare(String first, String other){
+          return other.toLowerCase().compareTo(first.toLowerCase());
+        }
+      });
+    System.out.println("Sorted using another anonymous class:");
+    System.out.println(strings);
+
   }
 }
