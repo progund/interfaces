@@ -8,7 +8,7 @@ public class FBDir extends FBFile {
   
   
   public String thumbnail() {
-    return "[dir ]";
+    return "[dir]";
   }
   
 }
