@@ -10,7 +10,7 @@ public class Book implements Comparable<Book>{
   private String name;
   private int    year;
 
-  private static final String SEPARATOR = ",";
+  private static final String SEPARATOR = ", ";
 
   /**
    * Constructs a new Book with the given name and year.
