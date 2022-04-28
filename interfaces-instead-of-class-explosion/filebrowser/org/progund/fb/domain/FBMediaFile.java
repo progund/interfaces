@@ -1,9 +1,10 @@
 package org.progund.fb.domain;
 
 import org.progund.mediaplayer.Playable;
+
 /**
- * <p>An FBMediaFile adds functionality to an FBFile by making it
- * Playable (having a play() method).</p>
+ * An FBMediaFile adds functionality to an FBFile by making it
+ * Playable (having a play() method).
  *
  * <p>You can say that this class decorates an FBFile by making it Playable.
  * </p>
@@ -52,7 +53,7 @@ public class FBMediaFile extends FBFile implements Playable {
   }
 
   /**
-   * Returns a String representation of this FBMediaFile
+   * Returns a String representation of this FBMediaFile.
    * @return This FBMediaFile as a String
    */
   @Override
@@ -63,7 +64,7 @@ public class FBMediaFile extends FBFile implements Playable {
   }
 
   /**
-   * <p>Implements the play method from the Playable interface.</p>
+   * Implements the play method from the Playable interface.
    *
    * <p>We are Playable, so we must have a play() method.</p>
    */
