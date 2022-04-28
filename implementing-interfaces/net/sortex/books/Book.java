@@ -3,12 +3,12 @@ package net.sortex.books;
 /**
  * Represents a Book. A Book has a name and a year.
  *
- * Please don't judge this class by its cover.
+ * <p>Please don't judge this class by its cover.
  */
-public class Book implements Comparable<Book>{
+public class Book implements Comparable<Book> {
 
   private String name;
-  private int    year;
+  private int year;
 
   private static final String SEPARATOR = ",";
 
@@ -16,8 +16,8 @@ public class Book implements Comparable<Book>{
    * Constructs a new Book with the given name and year.
    */
   public Book(String name, int year) {
-    this.name   = name;
-    this.year   = year;
+    this.name = name;
+    this.year = year;
   }
   
   public String name() {
@@ -31,8 +31,9 @@ public class Book implements Comparable<Book>{
   /**
    * Compares this Book with the given Book.
    * 
-   * The comparison is done on this Book's name, and if the name is the same as
-   * the name of the given Book, then the comparison is done using the year.
+   * <p>The comparison is done on this Book's name, and if the name
+   * is the same as the name of the given Book, then the comparison
+   * is done using the year.
    */
   @Override
   public int compareTo(Book other) {
