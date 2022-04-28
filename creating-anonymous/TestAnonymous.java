@@ -1,8 +1,9 @@
-import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.Collections;
-public class TestAnonymous{
-  public static void main(String[] args){
+import java.util.Comparator;
+
+public class TestAnonymous {
+  public static void main(String[] args) {
     ArrayList<String> strings = new ArrayList<>();
     strings.add("CEPA");
     strings.add("bepa");
@@ -12,9 +13,9 @@ public class TestAnonymous{
     strings.add("Baba");
     System.out.println("Unsorted: ");
     System.out.println(strings);
-    Collections.sort(strings, new Comparator<String>(){
+    Collections.sort(strings, new Comparator<String>() {
         @Override
-        public int compare(String first, String other){
+        public int compare(String first, String other) {
           return first.toLowerCase().compareTo(other.toLowerCase());
         }
       });
