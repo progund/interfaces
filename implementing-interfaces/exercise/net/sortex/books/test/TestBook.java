@@ -1,8 +1,8 @@
 package net.sortex.books.test;
 
+import java.util.Arrays;
 import net.sortex.books.Book;
 import net.sortex.books.BookYearComparator;
-import java.util.Arrays;
 
 public class TestBook {
 
