@@ -1,7 +1,7 @@
 package org.progund.fb.domain;
 
 /**
- * <p>Example of a concrete ThumbnaeilGenerator class</p>
+ * <p>Example of a concrete ThumbnaeilGenerator class.</p>
  *
  * <p>Normally, we'd use a lambda expression or an anonymous inner
  * class when creating a ThumbnailGenerator for an FBFile. This class
