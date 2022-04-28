@@ -1,9 +1,9 @@
 package net.sortex.books.test;
 
-import net.sortex.books.Book;
-import net.sortex.books.BookYearComparator;
 import java.util.Arrays;
 import java.util.Comparator;
+import net.sortex.books.Book;
+import net.sortex.books.BookYearComparator;
 
 public class TestBook {
 
@@ -32,9 +32,9 @@ public class TestBook {
     // lambda expressions:
     // First year, then name:
     Comparator<Book> nameComparator = (b1, b2) ->
-      b1.name().compareTo(b2.name());
+        b1.name().compareTo(b2.name());
     Comparator<Book> yearComparator = (b1, b2) ->
-      b1.year() - b2.year();
+        b1.year() - b2.year();
     
     books = getUnordered();
     System.out.println("Sorting on year, then name:");
@@ -47,9 +47,26 @@ public class TestBook {
     Arrays.sort(books, yearComparator);
     System.out.println(Arrays.toString(books));
 
+    books = getUnordered();    
+    System.out.println("Sorting on name using nameComp1");
     Comparator<Book> nameComp1 = new BookNameComparator();
+    Arrays.sort(books, nameComp1);
+    System.out.println(Arrays.toString(books));
+
+    books = getUnordered();
+    System.out.println("Sorting on name using nameComp2");
     Comparator<Book> nameComp2 = (b1,b2) -> b1.name().compareTo(b2.name());
+    Arrays.sort(books, nameComp2);
+    System.out.println(Arrays.toString(books));
+
+    books = getUnordered();
+    System.out.println("Sorting on name using nameComp3");
     Comparator<Book> nameComp3 = Comparator.comparing(Book::name);
+    Arrays.sort(books, nameComp3);
+    System.out.println(Arrays.toString(books));
+
+    books = getUnordered();
+    System.out.println("Sorting on name using nameComp4");
     Comparator<Book> nameComp4 = new Comparator<Book>() {
         @Override
         public int compare(Book b1, Book b2) {
@@ -57,23 +74,6 @@ public class TestBook {
         }
       };
     
-    books = getUnordered();    
-    System.out.println("Sorting on name using nameComp1");
-    Arrays.sort(books, nameComp1);
-    System.out.println(Arrays.toString(books));
-
-    books = getUnordered();
-    System.out.println("Sorting on name using nameComp2");
-    Arrays.sort(books, nameComp2);
-    System.out.println(Arrays.toString(books));
-
-    books = getUnordered();
-    System.out.println("Sorting on name using nameComp3");
-    Arrays.sort(books, nameComp3);
-    System.out.println(Arrays.toString(books));
-
-    books = getUnordered();
-    System.out.println("Sorting on name using nameComp4");
     Arrays.sort(books, nameComp4);
     System.out.println(Arrays.toString(books));
 
@@ -81,7 +81,6 @@ public class TestBook {
     Comparator<Book> yearThenNameComp = yearComparator.thenComparing(nameComparator);        
     
   }
-
 
   /* We start with this unordered arry of Book references */
   static Book[] start = {
