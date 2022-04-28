@@ -1,7 +1,6 @@
 package org.progund.fb.main;
 
 import java.io.File;
-
 import org.progund.fb.domain.FBFile;
 import org.progund.fb.util.FBList;
 import org.progund.mediaplayer.Playable;
@@ -43,17 +42,17 @@ public class FileBrowser {
     }
 
     System.out.println();
-    System.out.println("Listing all Text files (.txt | .java) in " + dir +
-                       " using a custom file filter:");
+    System.out.println("Listing all Text files (.txt | .java) in "
+                       + dir + " using a custom file filter:");
     for (FBFile fb : FBList.ls(dir, f ->
-                               f.getName().endsWith(".java") ||
-                               f.getName().endsWith(".txt"))) {
+                               f.getName().endsWith(".java")
+                               || f.getName().endsWith(".txt"))) {
       System.out.println(fb);
     }
 
     System.out.println();
-    System.out.println("Pretending to be a mediaplayer and playing" +
-                       " all playables obtained from FBList.playables():");
+    System.out.println("Pretending to be a mediaplayer and playing"
+                       + " all playables obtained from FBList.playables():");
     for (Playable playable : FBList.playables(dir)) {
       playable.play();
     }
